@@ -1,0 +1,37 @@
+{{extend 'layout.html'}}
+
+{{block content}}
+
+<div id="content_hero" style="background-image: url({{=URL('static','images/hero-shortcodes.jpg') }})">
+  <img src="{{=URL('static','images/scroll-arrow.svg') }}" alt="Scroll down" class="scroll" />
+  
+  <div class="container">
+  <div class="row blurb scrollme animateme" data-when="exit" data-from="0" data-to="1" data-opacity="0" data-translatey="100">
+  <div class="col-md-9">
+  <span class="title">De nouveaux clients...</span>
+  <h1>Clients</h1>
+  </div>
+  </div>
+  </div>
+  </div>
+
+
+<div  class="container">
+<br/>
+<h1 class="inline-block margin-right-100">Ajouter un client</h1> 
+<h1 class="inline-block bold-font-a"><a class="btn" href="{{=URL(c='client', f='liste_clients')}}">Liste des clients</a></h1>
+<br/><br/>
+
+<div class="alert alert-success">
+  <span>
+    <a class="btn circle" style="background-color: black; color: white;" target="_blank" href="{{=URL('static', pdf_url) }}">
+      
+    </a>
+  </span>
+</div>
+
+
+  {{=form}}
+
+</div>
+{{end content}}

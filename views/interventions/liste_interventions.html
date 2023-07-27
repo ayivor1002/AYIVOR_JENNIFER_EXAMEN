@@ -1,0 +1,63 @@
+{{extend 'layout.html'}}
+{{block content}}
+<div id="content_hero" style="background-image: url({{=URL('static','images/hero-shortcodes.jpg') }})">
+    <img src="{{=URL('static','images/scroll-arrow.svg') }}" alt="Scroll down" class="scroll" />
+    
+    <div class="container">
+    <div class="row blurb scrollme animateme" data-when="exit" data-from="0" data-to="1" data-opacity="0" data-translatey="100">
+    <div class="col-md-9">
+    <span class="title">Suivi des interventions</span>
+    <h1>Liste des interventions</h1>
+    </div>
+    </div>
+    </div>
+    </div>
+
+<div class="container">
+
+<br/>
+<h1 class="inline-block margin-right-100">Liste des interventions enrégistrés</h1> 
+<h1 class="inline-block bold-font-a"><a class="btn" style="color: blue;" href="{{=URL(c='intervention', f='ajout_intervention')}}">Ajouter Une intervention</a></h1>
+<br/><br/>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Contrat</th>
+            <th scope="col">Employé</th>
+            <th scope="col">Date intervention</th>
+            <th scope="col">Durée intervention</th>
+            
+            <th scope="col" colspan="2">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{for _intervention in interventions:}}
+        
+        <tr>
+            <th scope="row">{{=_intervention.id}}</th>
+            <th>{{=_intervention.contrat_id.description}}</th>
+            <th>{{=_intervention.date_debut}}</th>
+            <th>{{=_intervention.qualifications}}</th>
+            <th>{{=_intervention.nombre_employes}}</th>
+        
+            <td>
+                <a class="btn btn-primary" href="{{=URL(c='contrat', f='modifier_intervention', args=[_intervention.id])}}">
+                    <i class="fa fa-edit"></i>
+                </a>
+            </td>
+            <td>
+                <a class="btn btn-danger circle" href="{{=URL(c='contrat', f='supprimer_intervention', args=[_intervention.id])}}" onclick="return confirmDelete();">
+                    <i class="fa fa-trash-o"></i>
+                </a>
+            </td>
+        </tr>
+        {{pass}}
+    </tbody>
+</table>
+</div>
+
+
+{{end content}}

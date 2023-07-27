@@ -1,0 +1,54 @@
+{{extend 'layout.html'}}
+{{block content}}
+<div id="content_hero" style="background-image: url({{=URL('static','images/hero-shortcodes.jpg') }})">
+    <img src="{{=URL('static','images/scroll-arrow.svg') }}" alt="Scroll down" class="scroll" />
+    
+    <div class="container">
+    <div class="row blurb scrollme animateme" data-when="exit" data-from="0" data-to="1" data-opacity="0" data-translatey="100">
+    <div class="col-md-9">
+    <span class="title">Des nouveautés chaque jour</span>
+    <h1>Liste des Personnels</h1>
+    </div>
+    </div>
+    </div>
+    </div>
+  
+  
+  <div  class="container">
+    <br/>
+<h1 class="inline-block margin-right-100">List des Personnels</h1> 
+<h1 class="inline-block bold-font-a"><a class="btn" href="{{=URL(c='personne', f='ajout_personne')}}">Ajouter des personnels</a></h1>
+<br/><br/>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Prénom</th>
+            <th scope="col" colspan="2">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{for _personne in rows:}}
+        
+        <tr>
+            <th scope="row">{{=_personne.id}}</th>
+            <th>{{=_personne.nom}}</th>
+            <th>{{=_personne.prenom}}</th>
+            <td>
+                <a class="btn btn-primary" href="{{=URL(c='personne', f='modifier_personne', args=[_personne.id])}}">
+                    <i class="fa fa-edit"></i>
+                </a>
+            </td>
+            <td>
+                <a class="btn btn-danger circle" href="{{=URL(c='personne', f='supprimer_personne', args=[_personne.id])}}">
+                    <i class="fa fa-trash-o"></i>
+                </a>
+            </td>
+        </tr>
+        {{pass}}
+    </tbody>
+</table>
+</div>
+{{end content}}

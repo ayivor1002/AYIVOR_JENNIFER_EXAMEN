@@ -1,0 +1,65 @@
+{{extend 'layout.html'}}
+{{block content}}
+<div id="content_hero" style="background-image: url({{=URL('static','images/hero-shortcodes.jpg') }})">
+    <img src="{{=URL('static','images/scroll-arrow.svg') }}" alt="Scroll down" class="scroll" />
+    
+    <div class="container">
+    <div class="row blurb scrollme animateme" data-when="exit" data-from="0" data-to="1" data-opacity="0" data-translatey="100">
+    <div class="col-md-9">
+    <span class="title">Des nouveautés chaque jour</span>
+    <h1>Liste des Films</h1>
+    </div>
+    </div>
+    </div>
+    </div>
+
+<div class="container">
+
+<br/>
+<h1 class="inline-block margin-right-100">Liste des Films enrégistrés</h1> 
+<h1 class="inline-block bold-font-a"><a class="btn" style="color: blue;" href="{{=URL(c='film', f='ajout_film')}}">Ajouter Un Nouveau Film</a></h1>
+<br/><br/>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Image</th>
+            <th scope="col">Titre</th>
+            <th scope="col">Date de Sortie</th>
+            <th scope="col">Durée</th>
+            <th scope="col">Réalisateur</th>
+            <th scope="col">Description</th>
+            <th scope="col" colspan="2">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{for _film in films:}}
+        
+        <tr>
+            <th scope="row">{{=_film.id}}</th>
+            <th><img src="{{=URL(c='default', f='download', args=[_film.image])}}" width="70" height="50" /></th>
+            <th>{{=_film.titre}}</th>
+            <th>{{=_film.date_sortie}}</th>
+            <th>{{=_film.duree}}</th>
+            <th>{{=_film.realisateur}}</th>
+            <td>{{=_film.description}}</td>
+            <td>
+                <a class="btn btn-primary" href="{{=URL(c='film', f='modifier_film', args=[_film.id])}}">
+                    <i class="fa fa-edit"></i>
+                </a>
+            </td>
+            <td>
+                <a class="btn btn-danger circle" href="{{=URL(c='film', f='supprimer_film', args=[_film.id])}}" onclick="return confirmDelete();">
+                    <i class="fa fa-trash-o"></i>
+                </a>
+            </td>
+        </tr>
+        {{pass}}
+    </tbody>
+</table>
+</div>
+
+
+{{end content}}

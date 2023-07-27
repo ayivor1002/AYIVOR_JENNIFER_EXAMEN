@@ -1,0 +1,73 @@
+{{extend 'layout.html'}}
+{{block content}}
+<div id="content_hero" style="background-image: url({{=URL('static','images/hero-shortcodes.jpg') }})">
+    <img src="{{=URL('static','images/scroll-arrow.svg') }}" alt="Scroll down" class="scroll" />
+    
+    <div class="container">
+    <div class="row blurb scrollme animateme" data-when="exit" data-from="0" data-to="1" data-opacity="0" data-translatey="100">
+    <div class="col-md-9">
+    <span class="title">Des nouveautés chaque jour</span>
+    <h1>Liste des Affiches</h1>
+    </div>
+    </div>
+    </div>
+    </div>
+  
+  
+  <div  class="container">
+    <br/>
+    <h1 class="inline-block margin-right-100">Liste des Affiches enrégistrées</h1> 
+    <h1 class="inline-block bold-font-a"><a class="btn" href="{{=URL(c='affiche', f='ajout_affiche')}}">Ajouter de nouvelles Affiches</a></h1>
+    <br/><br/>
+    
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Numéro d'affichage</th>
+            <th scope="col">Image du Film</th>
+            <th scope="col">Titre du Film</th>
+            <th scope="col">Date et Heure de Projection</th>
+            <th scope="col" colspan="2">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{for _affiche in rows:}}
+        
+        <tr>
+            <th scope="row">{{=_affiche.id}}</th>
+            <th>{{=_affiche.numero_affiche}}</th>
+            <th>
+                {{if _affiche.film_id != None:}}
+                    <img src="{{=URL(c='default', f='download', args=[_affiche.film_id.image])}}" width="70" height="50" />
+                {{else:}}
+                    Image du Film non trouvée
+                {{pass}}
+            </th>
+            <th>
+                {{if _affiche.film_id != None:}}
+                    {{=_affiche.film_id.titre}}
+                {{else:}}
+                    Titre du Film non trouvé
+                {{pass}}
+            </th>
+            
+            <th>{{=_affiche.date_heure_projection}}</th>
+            <td>
+                <a class="btn btn-primary" href="{{=URL(c='affiche', f='modifier_affiche', args=[_affiche.id])}}">
+                    <i class="fa fa-edit"></i>
+                </a>
+            </td>
+            <td>
+                <a class="btn btn-danger circle" href="{{=URL(c='affiche', f='supprimer_affiche', args=[_affiche.id])}}">
+                    <i class="fa fa-trash-o"></i>
+                </a>
+            </td>
+        </tr>
+        {{pass}}
+    </tbody>
+</table>
+
+</div>
+
+{{end content}}

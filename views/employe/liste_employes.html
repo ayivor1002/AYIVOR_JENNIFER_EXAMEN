@@ -1,0 +1,60 @@
+{{extend 'layout.html'}}
+{{block content}}
+<div id="content_hero" style="background-image: url({{=URL('static','images/hero-shortcodes.jpg') }})">
+    <img src="{{=URL('static','images/scroll-arrow.svg') }}" alt="Scroll down" class="scroll" />
+    
+    <div class="container">
+    <div class="row blurb scrollme animateme" data-when="exit" data-from="0" data-to="1" data-opacity="0" data-translatey="100">
+    <div class="col-md-9">
+    <span class="title">Liste des employés</span>
+    <h1>Employés</h1>
+    </div>
+    </div>
+    </div>
+    </div>
+  
+  
+  <div  class="container">
+    <br/>
+<h1 class="inline-block margin-right-100">Liste des employés</h1> 
+<h1 class="inline-block bold-font-a"><a class="btn" href="{{=URL(c='employe', f='ajout_employe')}}">Ajouter des employés</a></h1>
+<br/><br/>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Prenom</th>
+            <th scope="col">Qualification</th>
+            <th scope="col">Email</th>
+            <th scope="col">Telephone</th>
+            <th scope="col" colspan="2">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{for _employe in rows:}}
+        
+        <tr>
+            <th scope="row">{{=_employe.id}}</th>
+            <th>{{=_employe.nom}}</th>
+            <th>{{=_employe.prenom}}</th>
+            <th>{{=_employe.qualification}}</th>
+            <th>{{=_employe.email}}</th>
+            <th>{{=_employe.telephone}}</th>
+            <td>
+                <a class="btn btn-primary" href="{{=URL(c='employe', f='modifier_employe', args=[_employe.id])}}">
+                    <i class="fa fa-edit"></i>
+                </a>
+            </td>
+            <td>
+                <a class="btn btn-danger circle" href="{{=URL(c='employe', f='supprimer_employe', args=[_employe.id])}}" onclick="return confirmDelete();">
+                    <i class="fa fa-trash-o"></i>
+                </a>
+            </td>
+        </tr>
+        {{pass}}
+    </tbody>
+</table>
+</div>
+{{end content}}

@@ -1,0 +1,12 @@
+.inline-block {
+    display: inline-block;
+}
+
+.margin-right-100 {
+    margin-right: 100px;
+}
+
+.bold-font-a a {
+    font-weight: bold;
+    font-size: 35px;
+}

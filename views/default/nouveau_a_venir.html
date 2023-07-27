@@ -1,0 +1,542 @@
+{{extend 'layout.html'}}
+{{block content}}
+
+<div
+    id="content_hero"
+    style="background-image: url({{=URL('static','images/hero-whats-on.jpg') }})"
+>
+    <div class="container">
+        <div
+            class="row blurb scrollme animateme"
+            data-when="exit"
+            data-from="0"
+            data-to="1"
+            data-opacity="0"
+            data-translatey="100"
+        >
+            <div class="col-md-9">
+                <span class="title">Approchez regardez!!!</span>
+
+                <h1>Quoi de nouveau dans la semaine du {{=lundi_samaine_day}} à venir ?</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container section negative-margin">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="live-search">
+                <input
+                    type="text"
+                    id="search"
+                    placeholder="Quoi vous recherchez ?"
+                />
+
+                <i class="material-icons">search</i>
+            </div>
+
+            <div class="tabs movies">
+                <ul>
+                    <li>
+                        <a href="#mon">Lundi</a>
+                    </li>
+
+                    <li>
+                        <a href="#tue">Mardi</a>
+                    </li>
+
+                    <li>
+                        <a href="#wed">Mercredi</a>
+                    </li>
+
+                    <li>
+                        <a href="#thu">Jeudi</a>
+                    </li>
+
+                    <li>
+                        <a href="#fri">Vendredi</a>
+                    </li>
+
+                    <li>
+                        <a href="#sat">Samedi</a>
+                    </li>
+
+                    <li>
+                        <a href="#sun">Dimanche</a>
+                    </li>
+
+                    <li class="date">
+                        <span>La samaine suivante</span>
+                    </li>
+                </ul>
+
+                <div id="mon">
+                    
+                    {{for _affiche in lundi:}}
+                    <div class="row movie-tabs">
+                        <div class="col-md-2 col-sm-3">
+                            <a href="{{=URL(c='affiche', f='detail', args=[_affiche.id])}}">
+                                <img
+                                    src="{{=URL(c='default', f='download', args=[_affiche.film_id.image])}}"
+                                    alt="{{=_affiche.film_id.titre}}"
+                                >
+                            </a>
+                        </div>
+
+                        <div class="col-md-10 col-sm-9">
+                            <span class="title">{{=_affiche.numero_affiche}}</span>
+
+                            <h3 class="no-underline">{{=_affiche.film_id.titre}}</h3>
+
+                            <p>
+                                {{=_affiche.film_id.description}}
+                            </p>
+
+                            <p>
+                                <a
+                                    href="news-single.html"
+                                    class="arrow-button"
+                                >Sortie : {{=_affiche.film_id.date_sortie}}</a>
+                            </p>
+
+                            <div class="row">
+                                <div class="col-md-8 col-sm-9">
+                                    <hr class="space-10">
+
+                                    
+                                    <span class="time">Programmé sur : {{=_affiche.date_heure_projection}}</span>
+                                    <div class="inline-block">
+                                        <form enctype="multipart/form-data" class="inline-block"
+                                            action="{{=URL(c='personne', f='ajout_personne')}}" method="post">
+                                            <input type="hidden" value="{{=_affiche.id}}" name="affiche_id" />
+                                        <input type="submit" class="btn btn-success" value="Réserver maintenant" />
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 col-sm-3 running-time">
+                                    <hr class="space-10">
+                                    {{=_affiche.film_id.duree}}
+
+                                    <span class="certificate">U</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{pass}}
+                </div>
+
+                <div id="tue">
+                    
+
+                    {{for _affiche in mardi:}}
+                    <div class="row movie-tabs">
+                        <div class="col-md-2 col-sm-3">
+                            <a href="{{=URL(c='affiche', f='detail', args=[_affiche.id])}}">
+                                <img
+                                    src="{{=URL(c='default', f='download', args=[_affiche.film_id.image])}}"
+                                    alt="{{=_affiche.film_id.titre}}"
+                                >
+                            </a>
+                        </div>
+
+                        <div class="col-md-10 col-sm-9">
+                            <span class="title">{{=_affiche.numero_affiche}}</span>
+
+                            <h3 class="no-underline">{{=_affiche.film_id.titre}}</h3>
+
+                            <p>
+                                {{=_affiche.film_id.description}}
+                            </p>
+
+                            <p>
+                                <a
+                                    href="news-single.html"
+                                    class="arrow-button"
+                                >Sortie : {{=_affiche.film_id.date_sortie}}</a>
+                            </p>
+
+                            <div class="row">
+                                <div class="col-md-8 col-sm-9">
+                                    <hr class="space-10">
+
+                                    
+                                    <span class="time">Programmé sur : {{=_affiche.date_heure_projection}}</span>
+                                    <div class="inline-block">
+                                        <form enctype="multipart/form-data" class="inline-block"
+                                            action="{{=URL(c='personne', f='ajout_personne')}}" method="post">
+                                            <input type="hidden" value="{{=_affiche.id}}" name="affiche_id" />
+                                        <input type="submit" class="btn btn-success" value="Réserver maintenant" />
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 col-sm-3 running-time">
+                                    <hr class="space-10">
+                                    {{=_affiche.film_id.duree}}
+
+                                    <span class="certificate">U</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{pass}}
+                </div>
+
+                <div id="wed">
+                    
+                    {{for _affiche in mercredi:}}
+                    <div class="row movie-tabs">
+                        <div class="col-md-2 col-sm-3">
+                            <a href="{{=URL(c='affiche', f='detail', args=[_affiche.id])}}">
+                                <img
+                                    src="{{=URL(c='default', f='download', args=[_affiche.film_id.image])}}"
+                                    alt="{{=_affiche.film_id.titre}}"
+                                >
+                            </a>
+                        </div>
+
+                        <div class="col-md-10 col-sm-9">
+                            <span class="title">{{=_affiche.numero_affiche}}</span>
+
+                            <h3 class="no-underline">{{=_affiche.film_id.titre}}</h3>
+
+                            <p>
+                                {{=_affiche.film_id.description}}
+                            </p>
+
+                            <p>
+                                <a
+                                    href="news-single.html"
+                                    class="arrow-button"
+                                >Sortie : {{=_affiche.film_id.date_sortie}}</a>
+                            </p>
+
+                            <div class="row">
+                                <div class="col-md-8 col-sm-9">
+                                    <hr class="space-10">
+
+                                    
+                                    <span class="time">Programmé sur : {{=_affiche.date_heure_projection}}</span>
+                                    <div class="inline-block">
+                                        <form enctype="multipart/form-data" class="inline-block"
+                                            action="{{=URL(c='personne', f='ajout_personne')}}" method="post">
+                                            <input type="hidden" value="{{=_affiche.id}}" name="affiche_id" />
+                                        <input type="submit" class="btn btn-success" value="Réserver maintenant" />
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 col-sm-3 running-time">
+                                    <hr class="space-10">
+                                    {{=_affiche.film_id.duree}}
+
+                                    <span class="certificate">U</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{pass}}
+                </div>
+
+                <div id="thu">
+                    
+                    {{for _affiche in jeudi:}}
+                    <div class="row movie-tabs">
+                        <div class="col-md-2 col-sm-3">
+                            <a href="{{=URL(c='affiche', f='detail', args=[_affiche.id])}}">
+                                <img
+                                    src="{{=URL(c='default', f='download', args=[_affiche.film_id.image])}}"
+                                    alt="{{=_affiche.film_id.titre}}"
+                                >
+                            </a>
+                        </div>
+
+                        <div class="col-md-10 col-sm-9">
+                            <span class="title">{{=_affiche.numero_affiche}}</span>
+
+                            <h3 class="no-underline">{{=_affiche.film_id.titre}}</h3>
+
+                            <p>
+                                {{=_affiche.film_id.description}}
+                            </p>
+
+                            <p>
+                                <a
+                                    href="news-single.html"
+                                    class="arrow-button"
+                                >Sortie : {{=_affiche.film_id.date_sortie}}</a>
+                            </p>
+
+                            <div class="row">
+                                <div class="col-md-8 col-sm-9">
+                                    <hr class="space-10">
+
+                                    
+                                    <span class="time">Programmé sur : {{=_affiche.date_heure_projection}}</span>
+                                    <div class="inline-block">
+                                        <form enctype="multipart/form-data" class="inline-block"
+                                            action="{{=URL(c='personne', f='ajout_personne')}}" method="post">
+                                            <input type="hidden" value="{{=_affiche.id}}" name="affiche_id" />
+                                        <input type="submit" class="btn btn-success" value="Réserver maintenant" />
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 col-sm-3 running-time">
+                                    <hr class="space-10">
+                                    {{=_affiche.film_id.duree}}
+
+                                    <span class="certificate">U</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{pass}}
+                </div>
+
+                <div id="fri">
+                    {{for _affiche in vendredi:}}
+                    <div class="row movie-tabs">
+                        <div class="col-md-2 col-sm-3">
+                            <a href="{{=URL(c='affiche', f='detail', args=[_affiche.id])}}">
+                                <img
+                                    src="{{=URL(c='default', f='download', args=[_affiche.film_id.image])}}"
+                                    alt="{{=_affiche.film_id.titre}}"
+                                >
+                            </a>
+                        </div>
+
+                        <div class="col-md-10 col-sm-9">
+                            <span class="title">{{=_affiche.numero_affiche}}</span>
+
+                            <h3 class="no-underline">{{=_affiche.film_id.titre}}</h3>
+
+                            <p>
+                                {{=_affiche.film_id.description}}
+                            </p>
+
+                            <p>
+                                <a
+                                    href="news-single.html"
+                                    class="arrow-button"
+                                >Sortie : {{=_affiche.film_id.date_sortie}}</a>
+                            </p>
+
+                            <div class="row">
+                                <div class="col-md-8 col-sm-9">
+                                    <hr class="space-10">
+
+                                    
+                                    <span class="time">Programmé sur : {{=_affiche.date_heure_projection}}</span>
+                                    <div class="inline-block">
+                                        <form enctype="multipart/form-data" class="inline-block"
+                                            action="{{=URL(c='personne', f='ajout_personne')}}" method="post">
+                                            <input type="hidden" value="{{=_affiche.id}}" name="affiche_id" />
+                                        <input type="submit" class="btn btn-success" value="Réserver maintenant" />
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 col-sm-3 running-time">
+                                    <hr class="space-10">
+                                    {{=_affiche.film_id.duree}}
+
+                                    <span class="certificate">U</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{pass}}
+                </div>
+
+                <div id="sat">
+                    
+                    {{for _affiche in samedi:}}
+                    <div class="row movie-tabs">
+                        <div class="col-md-2 col-sm-3">
+                            <a href="{{=URL(c='affiche', f='detail', args=[_affiche.id])}}">
+                                <img
+                                    src="{{=URL(c='default', f='download', args=[_affiche.film_id.image])}}"
+                                    alt="{{=_affiche.film_id.titre}}"
+                                >
+                            </a>
+                        </div>
+
+                        <div class="col-md-10 col-sm-9">
+                            <span class="title">{{=_affiche.numero_affiche}}</span>
+
+                            <h3 class="no-underline">{{=_affiche.film_id.titre}}</h3>
+
+                            <p>
+                                {{=_affiche.film_id.description}}
+                            </p>
+
+                            <p>
+                                <a
+                                    href="news-single.html"
+                                    class="arrow-button"
+                                >Sortie : {{=_affiche.film_id.date_sortie}}</a>
+                            </p>
+
+                            <div class="row">
+                                <div class="col-md-8 col-sm-9">
+                                    <hr class="space-10">
+
+                                    
+                                    <span class="time">Programmé sur : {{=_affiche.date_heure_projection}}</span>
+                                    <div class="inline-block">
+                                        <form enctype="multipart/form-data" class="inline-block"
+                                            action="{{=URL(c='personne', f='ajout_personne')}}" method="post">
+                                            <input type="hidden" value="{{=_affiche.id}}" name="affiche_id" />
+                                        <input type="submit" class="btn btn-success" value="Réserver maintenant" />
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 col-sm-3 running-time">
+                                    <hr class="space-10">
+                                    {{=_affiche.film_id.duree}}
+
+                                    <span class="certificate">U</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{pass}}
+                </div>
+
+                <div id="sun">
+                    
+                    {{for _affiche in dimanche:}}
+                    <div class="row movie-tabs">
+                        <div class="col-md-2 col-sm-3">
+                            <a href="{{=URL(c='affiche', f='detail', args=[_affiche.id])}}">
+                                <img
+                                    src="{{=URL(c='default', f='download', args=[_affiche.film_id.image])}}"
+                                    alt="{{=_affiche.film_id.titre}}"
+                                >
+                            </a>
+                        </div>
+
+                        <div class="col-md-10 col-sm-9">
+                            <span class="title">{{=_affiche.numero_affiche}}</span>
+
+                            <h3 class="no-underline">{{=_affiche.film_id.titre}}</h3>
+
+                            <p>
+                                {{=_affiche.film_id.description}}
+                            </p>
+
+                            <p>
+                                <a
+                                    href="news-single.html"
+                                    class="arrow-button"
+                                >Sortie : {{=_affiche.film_id.date_sortie}}</a>
+                            </p>
+
+                            <div class="row">
+                                <div class="col-md-8 col-sm-9">
+                                    <hr class="space-10">
+
+                                    
+                                    <span class="time">Programmé sur : {{=_affiche.date_heure_projection}}</span>
+                                    <div class="inline-block">
+                                        <form enctype="multipart/form-data" class="inline-block"
+                                            action="{{=URL(c='personne', f='ajout_personne')}}" method="post">
+                                            <input type="hidden" value="{{=_affiche.id}}" name="affiche_id" />
+                                        <input type="submit" class="btn btn-success" value="Réserver maintenant" />
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 col-sm-3 running-time">
+                                    <hr class="space-10">
+                                    {{=_affiche.film_id.duree}}
+
+                                    <span class="certificate">U</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{pass}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- <h1 style="text-align: center;">Affiche de cette semaine</h1> -->
+<div class="container section">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2>Toutes les affiche</h2>
+  
+            <div
+                class="slick-carousel"
+                id="newIn"
+            >
+                
+            {{for _affiche in rows:}}
+                <div class="movie-slide">
+                    <div class="movie-poster">
+                        <aside>
+                            <div>
+                                <a
+                                    href="{{=_affiche.film_id.resume_video}}"
+                                    data-vbtype="video"
+                                    class="venobox play"
+                                >
+                                    <i class="material-icons">play_arrow</i>
+                                </a>
+  
+                                <!-- <a
+                                    href="{{=URL(c='affiche', f='detail', args=[_affiche.id])}}"
+                                    class="read-more"
+                                >Lire plus</a> -->
+                                <a
+                                    href="#"
+                                    class="read-more"
+                                >Impossible de lire la suite</a>
+  
+                                <span class="date">A diffuser: {{=_affiche.date_heure_projection}}</span>
+                            </div>
+                        </aside>
+  
+                        <a href="#">
+                            <img
+                                style="height: 300px !important;" height="250"
+                                src="{{=URL(c='default', f='download', args=[_affiche.film_id.image])}}"
+                                alt="Movie title"
+                            >
+                        </a>
+                    </div>
+  
+                    <h4 class="no-underline">{{=_affiche.film_id.titre}}</h4>
+  
+                    <div class="star-rating">
+                        <i class="material-icons">star_rate</i>
+  
+                        <i class="material-icons">star_rate</i>
+  
+                        <i class="material-icons">star_rate</i>
+  
+                        <i class="material-icons">star_rate</i>
+  
+                        <i class="material-icons">star_rate</i>
+                    </div>
+                </div>
+  
+                {{pass}}
+  
+  
+            </div>
+        </div>
+    </div>
+  </div>
+
+  
+{{end content}}

@@ -1,0 +1,175 @@
+{{extend 'layout.html'}}
+{{block content}}
+
+
+<div
+id="hero"
+class="carousel slide carousel-fade"
+data-ride="carousel"
+>
+<img
+    src="{{=URL('static','images/scroll-arrow.svg') }}"
+    alt="Scroll down"
+    class="scroll"
+>
+
+<div class="container">
+    <ol class="carousel-indicators">
+        <li
+            data-target="#hero"
+            data-slide-to="0"
+            class="active"
+        ></li>
+
+        <li
+            data-target="#hero"
+            data-slide-to="1"
+        ></li>
+
+        <li
+            data-target="#hero"
+            data-slide-to="2"
+        ></li>
+    </ol>
+</div>
+
+<div class="carousel-inner">
+    <div
+        class="item active"
+        style="background-image: url({{=URL('static','images/PME1.jpg') }})"
+    >
+        <div class="container">
+            <div
+                class="row blurb scrollme animateme"
+                data-when="exit"
+                data-from="0"
+                data-to="1"
+                data-opacity="0"
+                data-translatey="100"
+            >
+            <div class="col-md-9">
+              <span class="title"></span>
+
+              <h1>NOUS VOUS PROPOSONS NOS SERVICES</h1>
+
+              <p>
+                Nous gérons vos contrats d'intervention et vous fournissons des employés avec différentes qualifications pour exécuter vos tâches spécifiques.
+              </p>
+
+              <div class="buttons">
+                  <span class="certificate"></span>
+
+                      <span></span>
+                  </a>
+              </div>
+          </div>
+            </div>
+        </div>
+    </div>
+
+    <div
+        class="item"
+        style="background-image: url({{=URL('static','images/PME2.jpeg') }})"
+    >
+        <div class="container">
+            <div
+                class="row blurb scrollme animateme"
+                data-when="exit"
+                data-from="0"
+                data-to="1"
+                data-opacity="0"
+                data-translatey="100"
+            >
+                <div class="col-md-9">
+                    <span class="title"></span>
+
+                    <h1>NOUS VOUS PROPOSONS NOS SERVICES</h1>
+
+                    <p>
+                      Nous gérons vos contrats d'intervention et vous fournissons des employés avec différentes qualifications pour exécuter vos tâches spécifiques.
+                    </p>
+
+                    <div class="buttons">
+                        <span class="certificate">15</span>
+
+                            <span></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div
+        class="item"
+        style="background-image: url({{=URL('static','images/PME3.png') }})"
+    >
+        <div class="container">
+            <div
+                class="row blurb scrollme animateme"
+                data-when="exit"
+                data-from="0"
+                data-to="1"
+                data-opacity="0"
+                data-translatey="100"
+            >
+            <div class="col-md-9">
+              <span class="title"></span>
+
+              <h1>NOUS VOUS PROPOSONS NOS SERVICES</h1>
+
+              <p>
+                Nous gérons vos contrats d'intervention et vous fournissons des employés avec différentes qualifications pour exécuter vos tâches spécifiques.
+              </p>
+
+              <div class="buttons">
+                  <span class="certificate"></span>
+
+                      <span></span>
+                  </a>
+              </div>
+          </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+
+<div class="container section">
+  <div class="row">
+      <div class="col-sm-12">
+          <h2></h2>
+
+          <div
+              class="slick-carousel"
+              id="newIn"
+          >
+
+
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+<section class="dark">
+    <div class="container section remove-bottom-padding">
+      
+    </div>
+  </section>
+
+
+
+
+
+
+
+{{end content}}

@@ -1,0 +1,63 @@
+{{extend 'layout.html'}}
+{{block content}}
+<div id="content_hero" style="background-image: url({{=URL('static','images/hero-shortcodes.jpg') }})">
+    <img src="{{=URL('static','images/scroll-arrow.svg') }}" alt="Scroll down" class="scroll" />
+    
+    <div class="container">
+    <div class="row blurb scrollme animateme" data-when="exit" data-from="0" data-to="1" data-opacity="0" data-translatey="100">
+    <div class="col-md-9">
+    <span class="title">De nouveaux contrats tous les jours</span>
+    <h1>Liste des contrats</h1>
+    </div>
+    </div>
+    </div>
+    </div>
+
+<div class="container">
+
+<br/>
+<h1 class="inline-block margin-right-100">Liste des Contrats enrégistrés</h1> 
+<h1 class="inline-block bold-font-a"><a class="btn" style="color: blue;" href="{{=URL(c='contrat', f='ajout_contrat')}}">Ajouter Un Nouveau contrat</a></h1>
+<br/><br/>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Description</th>
+            <th scope="col">date_debut</th>
+            <th scope="col">Qualifications</th>
+            <th scope="col">Nombre emloyés</th>
+            
+            <th scope="col" colspan="2">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{for _contrat in contrats:}}
+        
+        <tr>
+            <th scope="row">{{=_contrat.id}}</th>
+            <th>{{=_contrat.description}}</th>
+            <th>{{=_contrat.date_debut}}</th>
+            <th>{{=_contrat.qualifications}}</th>
+            <th>{{=_contrat.nombre_employes}}</th>
+        
+            <td>
+                <a class="btn btn-primary" href="{{=URL(c='contrat', f='modifier_contrat', args=[_contrat.id])}}">
+                    <i class="fa fa-edit"></i>
+                </a>
+            </td>
+            <td>
+                <a class="btn btn-danger circle" href="{{=URL(c='contrat', f='supprimer_contrat', args=[_contrat.id])}}" onclick="return confirmDelete();">
+                    <i class="fa fa-trash-o"></i>
+                </a>
+            </td>
+        </tr>
+        {{pass}}
+    </tbody>
+</table>
+</div>
+
+
+{{end content}}

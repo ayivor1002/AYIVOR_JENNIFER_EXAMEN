@@ -1,0 +1,357 @@
+{{extend 'layout.html'}}
+{{block content}}
+
+<div
+    id="content_hero"
+    style="background-image: url({{=URL('static','images/hero-single-movie.jpg') }})"
+>
+    <img
+        src="{{=URL('static','images/scroll-arrow.svg') }}"
+        alt="Scroll down"
+        class="scroll"
+    >
+
+    <div class="container">
+        <div
+            class="row blurb scrollme animateme"
+            data-when="exit"
+            data-from="0"
+            data-to="1"
+            data-opacity="0"
+            data-translatey="100"
+        >
+            <div class="col-md-9">
+                <span class="title">Action, Adventure, Sci-Fi</span>
+
+                <h1>Titre : {{=affiche.film_id.titre}}</h1>
+
+                <p>
+                    Numéro de l'affichage : {{=affiche.numero_affiche}}
+                </p>
+
+               
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container section single-movie">
+    <div class="row">
+        <div class="col-sm-7">
+            <h2>Synopsis</h2>
+
+            <div class="row">
+                <div class="col-sm-5">
+                    <img
+                        style="height: 300px !important;" height="250"
+                        src="{{=URL(c='default', f='download', args=[affiche.film_id.image])}}"
+                        alt="Transformers: The Last Knight"
+                        class="poster"
+                    />
+
+                    <div class="share">
+                        <a href="#">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+
+                        <a href="#">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+
+                        <a href="#">
+                            <i class="fa fa-pinterest"></i>
+                        </a>
+
+                        <a href="#">
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                    </div>
+                    
+                </div>
+
+                <div class="col-sm-7">
+                    <h3 class="no-underline">{{=affiche.film_id.titre}}</h3>
+
+                    
+
+                    <p>
+                        {{=affiche.film_id.description}}
+                    </p>
+
+                    <ul class="movie-info">
+                        <li>
+                            <i>Réalisateur</i>
+
+                            {{=affiche.film_id.realisateur}}
+                        </li>
+
+                        <li>
+                            <i>Date de sortie</i>
+
+                            {{=affiche.film_id.date_sortie}}
+                        </li>
+
+                        <li>
+                            <i>Duréé</i>
+
+                            {{=affiche.film_id.duree}}
+                        </li>
+                    </ul>
+
+                    <div class="inline-block">
+                        <form enctype="multipart/form-data" class="inline-block"
+                            action="{{=URL(c='personne', f='ajout_personne')}}" method="post">
+                            <input type="hidden" value="{{=affiche.id}}" name="affiche_id" />
+                        <input type="submit" class="btn btn-success" value="Réserver" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-4 col-sm-push-1">
+            <h2>Programmé sur</h2>
+
+            <ul class="show-times">
+               
+                <li>
+                    <i>{{=week_day}}</i>
+                    <span class="time">{{=affiche.date_heure_projection}}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<section class="dark">
+    <div class="container section remove-bottom-padding">
+        <div class="row comingSoon-slides singleGallery">
+            <div class="col-sm-12">
+                <div class="row single-slide slideOne">
+                    <div
+                        class="bg"
+                        style="background: url(images/gallery-bg.png);"
+                    ></div>
+
+                    <div class="col-sm-12 slide-video">
+                        <a
+                            href="{{=affiche.film_id.resume_video}}"
+                            data-vbtype="video"
+                            class="venobox video"
+                        >
+                            <i class="material-icons">play_arrow</i>
+
+                            <img
+                                style="width: 1200px !important; height: 600px !important;"
+                                src="{{=URL(c='default', f='download', args=[affiche.film_id.image])}}"
+                                alt=""
+                            >
+                        </a>
+                    </div>
+                </div>
+
+                <div class="row single-slide slideTwo">
+                    <div
+                        class="bg"
+                        style="background: url(images/gallery-bg-2.png);"
+                    ></div>
+
+                    <div class="col-sm-12 slide-video">
+                        <a
+                            href="https://youtu.be/AntcyqJ6brc"
+                            data-vbtype="video"
+                            class="venobox video"
+                        >
+                            <i class="material-icons">play_arrow</i>
+
+                            <img
+                                src="{{=URL('static','images/gallery-slide-2.jpg') }}"
+                                alt=""
+                            >
+                        </a>
+                    </div>
+                </div>
+
+                <div class="row single-slide slideThree">
+                    <div
+                        class="bg"
+                        style="background: url(images/gallery-bg.png);"
+                    ></div>
+
+                    <div class="col-sm-12 slide-video">
+                        <a
+                            href="https://youtu.be/AntcyqJ6brc"
+                            data-vbtype="video"
+                            class="venobox video"
+                        >
+                            <i class="material-icons">play_arrow</i>
+
+                            <img
+                                src="{{=URL('static','images/gallery-slide-1.jpg') }}"
+                                alt=""
+                            >
+                        </a>
+                    </div>
+                </div>
+
+                <div class="row single-slide slideFour">
+                    <div
+                        class="bg"
+                        style="background: url(images/gallery-bg-2.png);"
+                    ></div>
+
+                    <div class="col-sm-12 slide-video">
+                        <a
+                            href="https://youtu.be/AntcyqJ6brc"
+                            data-vbtype="video"
+                            class="venobox video"
+                        >
+                            <i class="material-icons">play_arrow</i>
+
+                            <img
+                                src="{{=URL('static','images/gallery-slide-2.jpg') }}"
+                                alt=""
+                            >
+                        </a>
+                    </div>
+                </div>
+
+                <div class="row single-slide slideFive">
+                    <div
+                        class="bg"
+                        style="background: url(images/gallery-bg.png);"
+                    ></div>
+
+                    <div class="col-sm-12 slide-video">
+                        <a
+                            href="https://youtu.be/AntcyqJ6brc"
+                            data-vbtype="video"
+                            class="venobox video"
+                        >
+                            <i class="material-icons">play_arrow</i>
+
+                            <img
+                                src="{{=URL('static','images/gallery-slide-1.jpg') }}"
+                                alt=""
+                            >
+                        </a>
+                    </div>
+                </div>
+
+                <div class="row single-slide slideSix">
+                    <div
+                        class="bg"
+                        style="background: url(images/gallery-bg-2.png);"
+                    ></div>
+
+                    <div class="col-sm-12 slide-video">
+                        <a
+                            href="https://youtu.be/AntcyqJ6brc"
+                            data-vbtype="video"
+                            class="venobox video"
+                        >
+                            <i class="material-icons">play_arrow</i>
+
+                            <img
+                                src="{{=URL('static','images/gallery-slide-2.jpg') }}"
+                                alt=""
+                            >
+                        </a>
+                    </div>
+                </div>
+
+                <div class="row single-slide slideSeven">
+                    <div
+                        class="bg"
+                        style="background: url(images/gallery-bg.png);"
+                    ></div>
+
+                    <div class="col-sm-12 slide-video">
+                        <a
+                            href="https://youtu.be/AntcyqJ6brc"
+                            data-vbtype="video"
+                            class="venobox video"
+                        >
+                            <i class="material-icons">play_arrow</i>
+
+                            <img
+                                src="{{=URL('static','images/gallery-slide-1.jpg') }}"
+                                alt=""
+                            >
+                        </a>
+                    </div>
+                </div>
+
+                <div
+                    class="slick-carousel gallery"
+                    id="comingSoon"
+                >
+                    <div data-dynamicclass="slideOne">
+                        <a href="#">
+                            <img
+                                src="{{=URL('static','images/gallery-thumb-1.png') }}"
+                                alt=""
+                            >
+                        </a>
+                    </div>
+
+                    <div data-dynamicclass="slideTwo">
+                        <a href="#">
+                            <img
+                                src="{{=URL('static','images/gallery-thumb-2.png') }}"
+                                alt=""
+                            >
+                        </a>
+                    </div>
+
+                    <div data-dynamicclass="slideThree">
+                        <a href="#">
+                            <img
+                                src="{{=URL('static','images/gallery-thumb-3.png') }}"
+                                alt=""
+                            >
+                        </a>
+                    </div>
+
+                    <div data-dynamicclass="slideFour">
+                        <a href="#">
+                            <img
+                                src="{{=URL('static','images/gallery-thumb-4.png') }}"
+                                alt=""
+                            >
+                        </a>
+                    </div>
+
+                    <div data-dynamicclass="slideFive">
+                        <a href="#">
+                            <img
+                                src="{{=URL('static','images/gallery-thumb-5.png') }}"
+                                alt=""
+                            >
+                        </a>
+                    </div>
+
+                    <div data-dynamicclass="slideSix">
+                        <a href="#">
+                            <img
+                                src="{{=URL('static','images/gallery-thumb-6.png') }}"
+                                alt=""
+                            >
+                        </a>
+                    </div>
+
+                    <div data-dynamicclass="slideSeven">
+                        <a href="#">
+                            <img
+                                src="{{=URL('static','images/gallery-thumb-4.png') }}"
+                                alt=""
+                            >
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{{end content}}
